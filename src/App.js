@@ -9,13 +9,22 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    axios.get('https://corona.lmao.ninja/v2/countries').then(
+    axios.get('https://corona.lmao.ninja/v2/countries', {
+      method: 'GET',
+      mode: 'no-cors',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+      },
+      withCredentials: true,
+      credentials: 'same-origin',
+    }).then(
       (res) => { setData(res.data); console.log(res.data); setLoading(true); }).catch(
         () => { setData([]); setLoading(false); });
   }, []);
 
   const sorter_desc = (sort_condition) => {
-    if (sort_condition == "country") {
+    if (sort_condition === "country") {
       const new_data = [...data];
       new_data.sort((a, b) => {
         var nameA = a.country.toUpperCase(); // ignore upper and lowercase
@@ -32,49 +41,49 @@ function App() {
       });
       setData(new_data);
     }
-    else if (sort_condition == "cases") {
+    else if (sort_condition === "cases") {
       console.log("sorting");
       const new_data = [...data];
       new_data.sort((a, b) => { return b.cases - a.cases });
       console.log(new_data)
       setData(new_data);
     }
-    else if (sort_condition == "todaycases") {
+    else if (sort_condition === "todaycases") {
       const new_data = [...data];
       new_data.sort((a, b) => { return b.todayCases - a.todayCases });
       setData(new_data);
     }
-    else if (sort_condition == "deaths") {
+    else if (sort_condition === "deaths") {
       const new_data = [...data];
       new_data.sort((a, b) => { return b.deaths - a.deaths });
       setData(new_data);
     }
-    else if (sort_condition == "todaydeaths") {
+    else if (sort_condition === "todaydeaths") {
       const new_data = [...data];
       new_data.sort((a, b) => { return b.todayDeaths - a.todayDeaths });
       setData(new_data);
     }
-    else if (sort_condition == "recovered") {
+    else if (sort_condition === "recovered") {
       const new_data = [...data];
       new_data.sort((a, b) => { return b.recovered - a.recovered });
       setData(new_data);
     }
-    else if (sort_condition == "todayrecovered") {
+    else if (sort_condition === "todayrecovered") {
       const new_data = [...data];
       new_data.sort((a, b) => { return b.todayRecovered - a.todayRecovered });
       setData(new_data);
     }
-    else if (sort_condition == "active") {
+    else if (sort_condition === "active") {
       const new_data = [...data];
       new_data.sort((a, b) => { return b.active - a.active });
       setData(new_data);
     }
-    else if (sort_condition == "critical") {
+    else if (sort_condition === "critical") {
       const new_data = [...data];
       new_data.sort((a, b) => { return b.critical - a.critical });
       setData(new_data);
     }
-    else if (sort_condition == "population") {
+    else if (sort_condition === "population") {
       const new_data = [...data];
       new_data.sort((a, b) => { return b.population - a.population });
       setData(new_data);
@@ -82,7 +91,7 @@ function App() {
 
   }
   const sorter_asc = (sort_condition) => {
-    if (sort_condition == "country") {
+    if (sort_condition === "country") {
       const new_data = [...data];
       new_data.sort((a, b) => {
         var nameA = a.country.toUpperCase(); // ignore upper and lowercase
@@ -98,49 +107,49 @@ function App() {
       });
       setData(new_data);
     }
-    else if (sort_condition == "cases") {
+    else if (sort_condition === "cases") {
       console.log("sorting");
       const new_data = [...data];
       new_data.sort((a, b) => { return a.cases - b.cases });
       console.log(new_data)
       setData(new_data);
     }
-    else if (sort_condition == "todaycases") {
+    else if (sort_condition === "todaycases") {
       const new_data = [...data];
       new_data.sort((a, b) => { return a.todayCases - b.todayCases });
       setData(new_data);
     }
-    else if (sort_condition == "deaths") {
+    else if (sort_condition === "deaths") {
       const new_data = [...data];
       new_data.sort((a, b) => { return a.deaths - b.deaths });
       setData(new_data);
     }
-    else if (sort_condition == "todaydeaths") {
+    else if (sort_condition === "todaydeaths") {
       const new_data = [...data];
       new_data.sort((a, b) => { return a.todayDeaths - b.todayDeaths });
       setData(new_data);
     }
-    else if (sort_condition == "recovered") {
+    else if (sort_condition === "recovered") {
       const new_data = [...data];
       new_data.sort((a, b) => { return a.recovered - b.recovered });
       setData(new_data);
     }
-    else if (sort_condition == "todayrecovered") {
+    else if (sort_condition === "todayrecovered") {
       const new_data = [...data];
       new_data.sort((a, b) => { return a.todayRecovered - b.todayRecovered });
       setData(new_data);
     }
-    else if (sort_condition == "active") {
+    else if (sort_condition === "active") {
       const new_data = [...data];
       new_data.sort((a, b) => { return a.active - b.active });
       setData(new_data);
     }
-    else if (sort_condition == "critical") {
+    else if (sort_condition === "critical") {
       const new_data = [...data];
       new_data.sort((a, b) => { return a.critical - b.critical });
       setData(new_data);
     }
-    else if (sort_condition == "population") {
+    else if (sort_condition === "population") {
       const new_data = [...data];
       new_data.sort((a, b) => { return a.population - b.population });
       setData(new_data);
