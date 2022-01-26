@@ -3,7 +3,7 @@ import React from 'react';
 export default function World({ data, sorter_asc, sorter_desc }) {
 
     return (
-        <div className='h-screen mx-5 my-5 border-2 min-h-screen max-h-screen overflow-x-auto overflow-y-auto'>
+        <div className='h-screen mx-10 my-5 border-2 min-h-screen max-h-screen overflow-x-auto overflow-y-auto'>
             <table className='mx-auto '>
                 <tr>
                     <th className="p-2">Sno. <div className="flex flex-row justify-around">
